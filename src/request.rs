@@ -1,5 +1,7 @@
 extern crate reqwest;
+extern crate http;
 use reqwest::Error;
+use http::StatusCode;
 
 pub async fn request(word: &String) -> Result<String, Error> {
     let app_id = "e8ecfe8c";
@@ -15,5 +17,8 @@ pub async fn request(word: &String) -> Result<String, Error> {
         .send()
         .await?;
 
-    Ok(response.text().await?)
+    match response.status() {
+        StatusCode::NOT_FOUND => Ok("404".to_string()),
+        _ => Ok(response.text().await?),
+    }
 }
