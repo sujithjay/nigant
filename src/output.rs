@@ -5,6 +5,15 @@ use crate::parser::Sense;
 extern crate termion;
 use termion::{color, style};
 
+pub fn print_not_found(query: String) {
+    println!("{}I could not find {}{}{} in my thesauri.{}",
+        color::Fg(color::LightRed),
+        color::Fg(color::Red), 
+        query,
+        color::Fg(color::LightRed), 
+        color::Fg(color::Reset));
+}
+
 pub fn print(payload: &Payload, query: String) {
 
     println!("{}{}{}", color::Fg(color::Cyan), query, color::Fg(color::Reset));

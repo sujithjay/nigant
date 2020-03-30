@@ -36,8 +36,13 @@ pub struct Cli {
 #[tokio::main]
 async fn main() -> Result<(), Error> {
     let args = Cli::from_args();
-    let response = request::request(&args.word);
-    let payload  = parser::parse(&response.await?);
-    output::print(&payload, args.word);
+    let response = request::request(&args.word).await?;
+    match response.as_str() {
+        "404" => 
+            output::print_not_found(args.word),
+        _ => 
+            output::print(&parser::parse(&response), args.word),
+    }
+    
     Ok(())
 }
