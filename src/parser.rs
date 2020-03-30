@@ -5,6 +5,7 @@ extern crate serde_json;
 #[derive(Serialize, Deserialize)]
 #[serde(rename_all = "camelCase")]
 pub struct Tuple{
+    #[serde(default)]
     pub id: String,
     pub text: String,
 }
@@ -46,6 +47,7 @@ pub struct Synonym{
 #[derive(Serialize, Deserialize)]
 #[serde(rename_all = "camelCase")]
 pub struct Subsense{
+    #[serde(default)]
     pub definitions: Vec<String>,
     #[serde(default)]
     pub domains: Vec<Tuple>,
@@ -58,6 +60,7 @@ pub struct Subsense{
 #[derive(Serialize, Deserialize)]
 #[serde(rename_all = "camelCase")]
 pub struct Sense{
+    #[serde(default)]
     pub definitions: Vec<String>,
     #[serde(default)]
     pub examples: Vec<Example>,
@@ -94,6 +97,7 @@ pub struct LexicalEntry{
 #[derive(Serialize, Deserialize)]
 #[serde(rename_all = "camelCase")]
 pub struct Word {
+    #[serde(default)]
     pub id: String,
     pub language: String,
     pub lexical_entries: Vec<LexicalEntry>,
@@ -104,17 +108,30 @@ pub struct Word {
 #[derive(Serialize, Deserialize)]
 #[serde(rename_all = "camelCase")]
 pub struct Metadata {
+    #[serde(default)]
     pub operation: String,
+    #[serde(default)]
     pub provider: String,
+    #[serde(default)]
     pub schema: String,
 }
 
 #[derive(Serialize, Deserialize)]
 #[serde(rename_all = "camelCase")]
 pub struct Payload {
+    #[serde(default)]
     pub id : String,
+    #[serde(default= "default_metadata")]
     pub metadata: Metadata,
     pub results:Vec<Word>,
+}
+
+fn default_metadata() -> Metadata {
+    return Metadata {
+        operation: String::from(""), 
+        provider: String::from(""), 
+        schema: String::from("")
+    };
 }
 
 pub fn parse(json: &String) -> Payload {
