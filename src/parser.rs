@@ -65,6 +65,7 @@ pub struct Sense{
     #[serde(default)]
     pub examples: Vec<Example>,
     pub id: String,
+    #[serde(default)]
     pub short_definitions: Vec<String>,
     #[serde(default)]
     pub subsenses: Vec<Subsense>,
