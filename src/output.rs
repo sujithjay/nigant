@@ -16,8 +16,9 @@ pub fn print_not_found(query: String) {
 
 pub fn print(payload: &Payload, query: String) {
 
-    println!("{}{}{}", color::Fg(color::Cyan), query, color::Fg(color::Reset));
-    println!("{}{}Definitions:{}", style::Italic, color::Fg(color::Yellow), style::Reset);
+    let mut defn: Vec<&String> = Vec::new();
+    let mut synm: Vec<&String> = Vec::new();
+    let mut etym: Vec<&String> = Vec::new();
 
     for word in &payload.results {
         let entries: Vec<&Entry> = word
@@ -31,28 +32,50 @@ pub fn print(payload: &Payload, query: String) {
             .flat_map(|m| &m.senses)
             .collect();
 
-        let definitions: Vec<&String> = senses
+        let mut definitions: Vec<&String> = senses
             .iter()
             .flat_map(|n| &n.definitions)
             .collect();
 
-        let synonyms: Vec<&String> = senses
+        let mut synonyms: Vec<&String> = senses
             .iter()
             .flat_map(|o| o.synonyms.iter().map( |s| &s.text))
             .collect();
 
-        for defn in &definitions {
-            println!("\t - {}", defn)
+        let mut etymologies: Vec<&String> = entries
+            .iter()
+            .flat_map(|m| &m.etymologies)
+            .collect();
+
+        defn.append(&mut definitions);
+        etym.append(&mut etymologies);
+        synm.append(&mut synonyms);
+    }
+
+    println!("");
+    println!("{}{}{}", color::Fg(color::Cyan), query, color::Fg(color::Reset));
+    println!("{}{}Definitions:{}", style::Italic, color::Fg(color::Yellow), style::Reset);
+
+    for d in &defn {
+        println!("\t - {}", d)
+    }
+    println!("");
+
+    if !synm.is_empty(){
+        println!("{}{}Synonyms:{}",style::Italic,color::Fg(color::Yellow), style::Reset);
+        let syn: Vec<String> = synm
+            .iter()
+            .map(|s| format!("{}", s))
+            .collect();
+        println!("{}", syn.join(", "));
+        println!("");
+    }
+
+    if !etym.is_empty(){
+        println!("{}{}Etymology:{}",style::Italic,color::Fg(color::Yellow), style::Reset);
+        for e in &etym {
+            println!("\t - {}", e)
         }
-        if !synonyms.is_empty(){
-            println!("");
-            println!("{}{}Synonyms:{}",style::Italic,color::Fg(color::Yellow), style::Reset);
-            let syn: Vec<String> = synonyms
-                .iter()
-                .map(|s| format!("{}", s))
-                .collect();
-            println!("{}", syn.join(", "));
-            println!("");
-        }
+        println!("");
     }
 }
