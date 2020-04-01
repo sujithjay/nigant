@@ -12,17 +12,17 @@ $ ./target/release/nigant <word>
 ```
 
 ```
-$ ./target/release/nigant fudge                                                                                                 
-fudge
+$ ./target/release/nigant pastiche                                                                                                 
+pastiche
 Definitions:
-	 - a soft candy made from sugar, butter, and milk or cream.
-	 - an instance of faking or ambiguity
-	 - a piece of late news inserted in a newspaper page.
-	 - present or deal with (something) in a vague, noncommittal, or inadequate way, especially so as to conceal the truth or mislead
-	 - nonsense! (expressing disbelief or annoyance)
+	 - an artistic work in a style that imitates that of another work, artist, or period
+	 - imitate the style of (an artist or work)
 
 Synonyms:
-chewy sweet, toffee, compromise, cover-up, halfway house, evade, dodge, skirt, avoid, duck, shift ground about
+imitation, parody, take-off, parody, take off, burlesque, pastiche, make fun of
+
+Etymology:
+	 - late 19th century: from French, from Italian pasticcio, based on late Latin pasta‘paste’
 ```
 
 ## Building
