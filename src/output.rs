@@ -5,7 +5,7 @@ use crate::parser::Sense;
 extern crate termion;
 use termion::{color, style};
 
-pub fn print_not_found(query: String) {
+pub fn print_not_found(query: &String) {
     println!("{}I could not find {}{}{} in my thesauri.{}",
         color::Fg(color::LightRed),
         color::Fg(color::Red), 
@@ -14,7 +14,7 @@ pub fn print_not_found(query: String) {
         color::Fg(color::Reset));
 }
 
-pub fn print(payload: &Payload, query: String) {
+pub fn print(payload: &Payload, query: &String) {
 
     let mut defn: Vec<&String> = Vec::new();
     let mut synm: Vec<&String> = Vec::new();

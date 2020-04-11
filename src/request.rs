@@ -1,14 +1,12 @@
-extern crate reqwest;
-extern crate http;
-use reqwest::Error;
+use anyhow::anyhow;
+use anyhow::Result;
 use http::StatusCode;
 
-pub async fn request(word: &String) -> Result<String, Error> {
+pub async fn request(word: &String) -> Result<String> {
     let app_id = "e8ecfe8c";
     let app_key = "991d2179aa7b61943d9756a5cac5ca01";
     let url = format!("https://od-api.oxforddictionaries.com/api/v2/entries/en-us/{entry}",
         entry = word);
-
     let client = reqwest::Client::new();
     let response = client
         .get(&url)
@@ -18,7 +16,7 @@ pub async fn request(word: &String) -> Result<String, Error> {
         .await?;
 
     match response.status() {
-        StatusCode::NOT_FOUND => Ok("404".to_string()),
+        StatusCode::NOT_FOUND => Err(anyhow!("404")),
         _ => Ok(response.text().await?),
     }
 }
