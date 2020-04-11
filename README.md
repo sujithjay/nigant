@@ -1,6 +1,8 @@
 # Nigant
 A Thesaurus for the Terminal
 
+![Mura](./resources/nigant.gif)
+
 ## Etymology
 `Nigant` comes the Sanskrit word `निघण्टु` (Nighaṇṭu), meaning a glossary or a partial lexicon.
 
