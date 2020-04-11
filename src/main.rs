@@ -2,11 +2,12 @@
 extern crate reqwest;
 
 use structopt::StructOpt;
-use reqwest::Error;
+use anyhow::Result;
 
 mod parser;
 mod request;
 mod output;
+mod cache;
 
 
 #[derive(StructOpt, Debug)]
@@ -34,14 +35,23 @@ pub struct Cli {
 }
 
 #[tokio::main]
-async fn main() -> Result<(), Error> {
+async fn main() -> Result<()> {
     let args = Cli::from_args();
-    let response = request::request(&args.word).await?;
-    match response.as_str() {
-        "404" => 
-            output::print_not_found(args.word),
-        _ => 
-            output::print(&parser::parse(&response), args.word),
+    let cached = cache::fetch(&args.word).await;
+
+    match cached {
+        Ok(payload) => output::print(&payload, &args.word),
+        Err(_) => {
+            let response = request::request(&args.word).await;
+            match response {
+                Err(_) => 
+                    output::print_not_found(&args.word),
+                Ok(r) => {
+                    cache::load(&parser::parse(&r)).await?;
+                    output::print(&parser::parse(&r), &args.word);
+                } 
+            }
+        }
     }
     
     Ok(())
