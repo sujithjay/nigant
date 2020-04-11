@@ -1,10 +1,11 @@
 use anyhow::anyhow;
 use anyhow::Result;
+use dotenv_codegen::dotenv;
 use http::StatusCode;
 
 pub async fn request(word: &String) -> Result<String> {
-    let app_id = "***REMOVED***";
-    let app_key = "***REMOVED***";
+    let app_id = dotenv!("APP_ID");
+    let app_key = dotenv!("APP_KEY");
     let url = format!("https://od-api.oxforddictionaries.com/api/v2/entries/en-us/{entry}",
         entry = word);
     let client = reqwest::Client::new();
