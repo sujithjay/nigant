@@ -27,6 +27,8 @@ Etymology:
 	 - late 19th century: from French, from Italian pasticcio, based on late Latin pasta‘paste’
 ```
 
+`Nigant` relies on the [Oxford Developer API](https://developer.oxforddictionaries.com/). Generate your `APP_ID` & `APP_KEY`, and place it in an `.env` file at the root of the `Nigant` directory.
+
 ## Building
 nigant is written in Rust, so you'll need to grab a Rust installation in order to compile it. In general, nigant tracks the latest stable release of the Rust compiler.
 
