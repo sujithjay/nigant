@@ -1,18 +1,35 @@
 # Nigant
 A Thesaurus for the Terminal
 
-![Mura](./resources/nigant.gif)
-
 ## Etymology
 `Nigant` comes the Sanskrit word `निघण्टु` (Nighaṇṭu), meaning a glossary or a partial lexicon.
 
 ## Usage
-Since the current version of the application is a beta release, we do **not** distribute it via the usual channels. You will have to build it before use. Refer section on [Building](#Building) for build instructions.
+
+### with Cargo
+You can install `Nigant` using `Cargo`.
+
+`Nigant` relies on the [Oxford Developer API](https://developer.oxforddictionaries.com/). Generate your `API ID` & `API KEY` from the [Oxford Developer API](https://developer.oxforddictionaries.com/), and place it in an `nigant.ini` file as `NIGANT_APP_ID` & `NIGANT_APP_KEY`.
 
 ```
+$ cat nigant.ini
+NIGANT_APP_ID=<YOUR_APP_ID>
+NIGANT_APP_KEY=<YOUR_APP_KEY>
+
+$ cargo install nigant
+```
+
+### by Building
+You can build `Nigant` from source-code before use. Refer section on [Building](#Building) for build instructions. Generate your `API ID` & `API KEY` from the [Oxford Developer API](https://developer.oxforddictionaries.com/), and place it in an `nigant.ini` file as `NIGANT_APP_ID` & `NIGANT_APP_KEY`.
+
+```
+$ cat nigant.ini
+NIGANT_APP_ID=<YOUR_APP_ID>
+NIGANT_APP_KEY=<YOUR_APP_KEY>
+
 $ ./target/release/nigant <word> 
 ```
-
+For example,
 ```
 $ ./target/release/nigant pastiche                                                                                                 
 pastiche
@@ -27,8 +44,6 @@ Etymology:
 	 - late 19th century: from French, from Italian pasticcio, based on late Latin pasta‘paste’
 ```
 
-`Nigant` relies on the [Oxford Developer API](https://developer.oxforddictionaries.com/). Generate your `APP_ID` & `APP_KEY`, and place it in an `.env` file at the root of the `Nigant` directory.
-
 ## Building
 `Nigant` is written in Rust, so you'll need to grab a Rust installation in order to compile it. In general, `Nigant` tracks the latest stable release of the Rust compiler.
 
@@ -38,5 +53,5 @@ $ git clone https://github.com/twinair/nigant
 $ cd nigant
 $ cargo build --release
 $ ./target/release/nigant --version
-nigant 0.1.0
+nigant 0.4.0	
 ```

@@ -1,6 +1,6 @@
 [package]
 name = "nigant"
-version = "0.3.0"
+version = "0.4.0"
 authors = ["Sujith Jay Nair <sujith@sujithjay.com>"]
 edition = "2018"
 license = "Apache-2.0"
@@ -8,9 +8,7 @@ description = "A Thesaurus for the Terminal"
 repository = "https://github.com/twinair/nigant"
 readme = "README.md"
 keywords = ["thesaurus", "vocabulary"]
-categories = ["command-line-utilities", "thesaurus"]
-
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+categories = ["command-line-utilities"]
 
 [dependencies]
 structopt = "0.3.12"
@@ -25,5 +23,4 @@ http = "0.2.1"
 cacache = "6.0.0"
 anyhow = "1.0.28"
 bincode = "1.2.1"
-dotenv = "0.15.0"
-dotenv_codegen = "0.15.0"
+config = "0.9"
