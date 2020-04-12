@@ -1,6 +1,6 @@
 [package]
 name = "nigant"
-version = "0.4.0"
+version = "0.4.1"
 authors = ["Sujith Jay Nair <sujith@sujithjay.com>"]
 edition = "2018"
 license = "Apache-2.0"
@@ -24,3 +24,9 @@ cacache = "6.0.0"
 anyhow = "1.0.28"
 bincode = "1.2.1"
 config = "0.9"
+
+[[bin]]
+bench = false
+path = "src/main.rs"
+name = "nigant"
+

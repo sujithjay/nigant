@@ -57,7 +57,5 @@ To build `Nigant`:
 ```
 $ git clone https://github.com/twinair/nigant
 $ cd nigant
-$ cargo build --release
-$ ./target/release/nigant --version
-nigant 0.4.0	
+$ cargo build --release	
 ```
