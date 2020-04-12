@@ -21,6 +21,8 @@ NIGANT_APP_ID=<YOUR_APP_ID>
 NIGANT_APP_KEY=<YOUR_APP_KEY>
 
 $ cargo install nigant
+
+$ nigant <word>
 ```
 
 ### by Building
