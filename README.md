@@ -35,9 +35,9 @@ NIGANT_APP_KEY=<YOUR_APP_KEY>
 
 $ ./target/release/nigant <word> 
 ```
-For example,
+### Example
 ```
-$ ./target/release/nigant pastiche                                                                                                 
+$ nigant pastiche                                                                                                 
 pastiche
 Definitions:
 	 - an artistic work in a style that imitates that of another work, artist, or period
