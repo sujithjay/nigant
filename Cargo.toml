@@ -1,8 +1,12 @@
 [package]
 name = "nigant"
-version = "0.2.0"
+version = "0.3.0"
 authors = ["Sujith Jay Nair <sujith@sujithjay.com>"]
 edition = "2018"
+license = "Apache-2.0"
+description = "A Thesaurus for the Terminal"
+repository = "https://github.com/twinair/nigant"
+readme = "README.md"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
