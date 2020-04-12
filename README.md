@@ -13,7 +13,7 @@ A Thesaurus for the Terminal
 ### with Cargo
 You can install `Nigant` using `Cargo`.
 
-`Nigant` relies on the [Oxford Developer API](https://developer.oxforddictionaries.com/). Generate your `API ID` & `API KEY` from the [Oxford Developer API](https://developer.oxforddictionaries.com/), and place it in an `nigant.ini` file as `NIGANT_APP_ID` & `NIGANT_APP_KEY`.
+`Nigant` relies on the [Oxford Developer API](https://developer.oxforddictionaries.com/). Generate your `API ID` & `API KEY`, and place it in an `nigant.ini` file as `NIGANT_APP_ID` & `NIGANT_APP_KEY`.
 
 ```
 $ cat nigant.ini
