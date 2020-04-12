@@ -1,4 +1,8 @@
 # Nigant
+![Rust](https://img.shields.io/badge/rust-stable-brightgreen.svg)
+[![Docs.rs](https://docs.rs/nigant/badge.svg)](https://docs.rs/nigant)
+[![Crates.io](https://img.shields.io/crates/d/nigant.svg)](https://crates.io/crates/nigant)
+
 A Thesaurus for the Terminal
 
 ## Etymology
